@@ -1,0 +1,6 @@
+FROM kaixhin/theano
+RUN pip install ptvsd
+WORKDIR /src
+EXPOSE 3000
+ENTRYPOINT ["python","src/app.py"]
+COPY . /src

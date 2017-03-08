@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  theano-deep-learning:
+    image: theano-deep-learning
+    build:
+      context: .
+      dockerfile: Dockerfile

@@ -26,6 +26,16 @@ Therefore, you can set break points within the `app.py` and step through the cod
 
 At this point, the `app.py` file does a very simple logistic calculation, but moving forward hopefully this current setup will serve as a platform for future development of Neural Network based classification.
 
+## Documentation
+
+This project uses [GitBook](http://gitbook.io) for building documentation.  If you'd like to build the documentation locally, the easiest way to do so is by doing the following:
+
+- Install gitbook command line tools globally via `npm install -g gitbook-cli`
+- from the root of the project run the following commands:
+  - `gitbook install`  - Installs all of the plugins for the book
+  - `gitbook serve`  - Builds and serves up the documentation through a development server
+  - Access the docs at http://localhost:4000
+
 # Future Work
 
 In the near future, I will be exploring developing actual working DNN's for doing classification of whale sounds from the ONC network.

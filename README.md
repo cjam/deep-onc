@@ -36,6 +36,26 @@ This project uses [GitBook](http://gitbook.io) for building documentation.  If y
   - `gitbook serve`  - Builds and serves up the documentation through a development server
   - Access the docs at http://localhost:4000
 
+Now when you modify markdown files within the [docs](./docs) folder the server will automatically refresh your browser with the updated docs.  
+
+### Table of contents
+
+In order to add your page to the table of contents, you must add a link to your page within the [Summary page](./docs/SUMMARY.md) see the [documentation](https://toolchain.gitbook.com/pages.html#summary) for more information.
+
+### Glossary
+
+the [Glossary](./docs/GLOSSARY.md) can be used for defining terms according to [these docs](https://toolchain.gitbook.com/lexicon.html)
+
+### Plugins
+
+Gitbook has many [plugins available](https://plugins.gitbook.com/) which can be installed by adding them to the [book.json](./book.json) file and running `gitbook install` (if building docs locally of course)
+
+Two plugins have been added to the documentation, 
+- [Katex](https://github.com/GitbookIO/plugin-katex) which allows for *Latex* to be used within documentation pages.
+- [Graph](https://github.com/cjam/gitbook-plugin-graph) A simple plugin that I created for rendering graphs and function plots within a docs page
+
+
+
 # Future Work
 
 In the near future, I will be exploring developing actual working DNN's for doing classification of whale sounds from the ONC network.

@@ -1,0 +1,5 @@
+{
+	"author": "Colter McQuay",
+	"root":".",
+	"plugins": ["katex","graph"]
+}

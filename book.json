@@ -1,5 +1,6 @@
 {
-	"author": "Colter McQuay",
-	"root":".",
+	"title" : "Classification of Hydrophone Data using DNN",
+    "author": "Colter McQuay",
+	"root":"./docs",
 	"plugins": ["katex","graph"]
 }

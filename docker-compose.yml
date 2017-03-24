@@ -12,7 +12,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - tensorboard-volume:/tensorboard
+      - ./tensor_logs:/tensorboard
       - ./notebooks:/notebooks
   # Tensorboard service
   tensorboard:
@@ -23,12 +23,8 @@ services:
     ports:
       - "6006:6006"
     volumes:
-      - tensorboard-volume:/tensorboard
+      - ./tensor_logs:/tensorboard
     entrypoint: 
       - tensorboard
       - --logdir
       - /tensorboard
-
-# Named volume that can be shared between two containers
-volumes:
-  tensorboard-volume:

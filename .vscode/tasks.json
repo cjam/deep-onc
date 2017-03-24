@@ -43,23 +43,24 @@
             {
                 "taskName": "build",
                 "suppressTaskName": true,
-                "args": [ "-c", "./dockerTask.sh build debug" ],
+                "args": [ "-c", "./dockerTask.sh build" ],
                 "isBuildCommand": true,
                 "showOutput": "always"
             },
             {
                 "taskName": "compose",
                 "suppressTaskName": true,
-                "args": [ "-c", "./dockerTask.sh compose debug" ],
+                "args": [ "-c", "./dockerTask.sh compose" ],
                 "isBuildCommand": false,
                 "showOutput": "always"
             },
             {
-                "taskName": "composeForDebug",
+                "taskName": "buildAndCompose",
                 "suppressTaskName": true,
-                "args": [ "-c", "./dockerTask.sh composeForDebug debug" ],
+                "args": [ "-c", "./dockerTask.sh buildAndCompose" ],
                 "isBuildCommand": false,
-                "showOutput": "always"
+                "showOutput": "always",
+                "isWatching": true
             }
         ]
     }

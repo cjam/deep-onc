@@ -1,6 +1,8 @@
 # Node
 node_modules/
 
+tensor_logs
+
 # Jupyter
 notebooks/data
 

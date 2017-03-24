@@ -14,7 +14,7 @@ The initial setup of this project is based on a few different technologies:
 - [Docker](https://docs.docker.com/) ( On my Mac I'm using [Docker For Mac](https://docs.docker.com/docker-for-mac/) ) 
 - [IPython](https://ipython.org/) which provides a web-based interactive computing shell for creating **notebooks** which are essentially markdown + code that can be executed and have results streamed back to the web.
 
-The majority of the project setup is taken care of by our [DockerFile](./Dockerfile) which is responsible for defining our base image to be used for our environment.  The other component to this setup is the [docker-compose](./docker-compose.yml) file which defines how to spin up the images and wire them together.
+The majority of the project setup is taken care of by our [DockerFile](./Dockerfile) which is responsible for defining our base image to be used for our environment.  The other component to this setup is the [docker-compose](./docker-compose.yml) file which defines how to spin up the images and wire them together.  We're pulling from this [Deep Learning image](https://github.com/floydhub/dl-docker) and then just upgrading a few packages.
 
 ### Docker Compose Structure
 

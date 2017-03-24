@@ -1,8 +1,34 @@
-version: '2'
+version: '3'
 
 services:
-  theano-deep-learning:
-    image: theano-deep-learning
+  # Jupyter Service
+  jupyter:
+    image: deep-onc
+    build:    
+      context: .
+      dockerfile: Dockerfile      
+    environment: 
+      - KERAS_BACKEND=tensorflow
+    ports:
+      - "8888:8888"
+    volumes:
+      - tensorboard-volume:/tensorboard
+      - ./notebooks:/notebooks
+  # Tensorboard service
+  tensorboard:
+    image: deep-onc
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - "6006:6006"
+    volumes:
+      - tensorboard-volume:/tensorboard
+    entrypoint: 
+      - tensorboard
+      - --logdir
+      - /tensorboard
+
+# Named volume that can be shared between two containers
+volumes:
+  tensorboard-volume:

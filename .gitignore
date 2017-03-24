@@ -1,6 +1,9 @@
 # Node
 node_modules/
 
+# Jupyter
+notebooks/data
+
 # Gitbook
 _book/
 

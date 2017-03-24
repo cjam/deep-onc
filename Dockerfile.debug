@@ -1,9 +1,0 @@
-FROM kaixhin/theano
-RUN pip install ptvsd
-RUN pip install keras
-ENV KERAS_BACKEND theano
-RUN python -c "from keras import backend; print backend._BACKEND"
-WORKDIR /src
-EXPOSE 3000
-ENTRYPOINT ["python","src/app.py"]
-COPY . /src

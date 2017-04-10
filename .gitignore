@@ -1,10 +1,15 @@
 # Node
 node_modules/
 
+
+
+# ONC Token
+**/onc_token.py*
+
 tensor_logs
 
 # Jupyter
-notebooks/data
+**/data
 
 # Gitbook
 _book/
@@ -19,7 +24,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
+.*env/
 build/
 develop-eggs/
 dist/

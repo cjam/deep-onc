@@ -12,7 +12,8 @@ RUN apt-get install -y graphviz \
 	&& pip --no-cache-dir install pydot-ng \
 	&& pip --no-cache-dir install --upgrade \
 	https://storage.googleapis.com/tensorflow/linux/${TENSORFLOW_ARCH}/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl \
-	&& pip --no-cache-dir install --upgrade git+git://github.com/fchollet/keras.git@${KERAS_VERSION}
+	&& pip --no-cache-dir install --upgrade git+git://github.com/fchollet/keras.git@${KERAS_VERSION} \
+	&& pip --no-cache-dir install tflearn
 
 # Replace the Jupyter config with our own pointing jupytr at our notebooks volume
 COPY jupyter_notebook_config.py /root/.jupyter/

@@ -8,6 +8,8 @@
     "**/.hg": true,
     "**/.DS_Store": true,
     "**/node_modules":true,
-    "**/.ipynb_checkpoints":true
-  }  
+    "**/.ipynb_checkpoints":true,
+    "**/*.pyc":true
+},
+"python.pythonPath": "${workspaceRoot}/devenv/bin/python"
 }

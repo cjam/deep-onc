@@ -11,5 +11,5 @@
     "**/.ipynb_checkpoints":true,
     "**/*.pyc":true
 },
-"python.pythonPath": "${workspaceRoot}/devenv/bin/python"
+"python.pythonPath": "${workspaceRoot}/.env/bin/python"
 }

@@ -5,10 +5,9 @@ from multiprocessing import cpu_count
 import threading
 import csv
 import pyONC.webservices.oncws as onc
-from onc_token import token
 from annotations import AnnotatedFile, Annotation
 from processors import WavCroppingAnnotationProcessor
-
+import onc_token
 
 class Data(object):
     '''
@@ -25,9 +24,10 @@ class AnnotationFileManager(object):
     '''
     Manages the downloading and processing for annotated files from ONC archive
     '''
-    fileArchive = onc.ArchiveFiles(token=token)
-
-    def __init__(self, download_threads=0):
+    def __init__(self, oncToken, download_threads=0):
+        if not oncToken:
+            raise onc_token.TokenMissingException()
+        self.file_archive = onc.ArchiveFiles(token=oncToken)
         self.processors = []
         self.download_queue = Queue()
         self.process_queue = Queue()
@@ -118,7 +118,7 @@ class AnnotationFileManager(object):
         # Start downloading threads
         for i in range(0, self.num_download_threads):
             _t = self.DownloadThread(i, self.download_queue,
-                                     self.process_queue, self.fileArchive)
+                                     self.process_queue, self.file_archive)
             _t.setDaemon(True)
             _t.start()
 
@@ -204,14 +204,27 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input-file", help="The path to the csv file to parse")
     parser.add_argument("-o", "--out-dir", help="The directory to place processed files")
+    parser.add_argument("-t","--token", help="ONC Token")
+    parser.add_argument("--token-file",help="File with ONC token stored")
+    parser.add_argument("--set-token",help="Stores the ONC token", action="store_true")
+    
     args = parser.parse_args()
 
-    input_file =  args.input_file if args.input_file else Data.AnnotationsFile
+    input_file = args.input_file if args.input_file else Data.AnnotationsFile
     output_dir = args.out_dir if args.out_dir else "./output_dir/"
+    token = args.token
+    token_file = args.token_file if args.token_file else onc_token.TOKEN_FILE_PATH
+    set_token = args.set_token
+
+    if set_token:
+        token = onc_token.save_token(token_file)
+
+    if not token:
+        token = onc_token.get_token(token_file)
 
     print("Processing {} into {}".format(input_file, output_dir))
 
-    onc_manager = AnnotationFileManager()
+    onc_manager = AnnotationFileManager(token)
     onc_manager.processors.append(
         WavCroppingAnnotationProcessor(os.path.join(output_dir, "cropped_wavs"))
     )

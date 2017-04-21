@@ -16,6 +16,7 @@
                 ,"-o"
                 ,"${workspaceRoot}/output_dir/"
             ],
+            "console": "integratedTerminal",
             "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
                 "WaitOnAbnormalExit",

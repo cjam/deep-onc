@@ -18,10 +18,11 @@ class TokenMissingException(Exception):
             "run python {} to save one".format(TOKEN_FILE_NAME, __file__)
 
 
-def __get_token():
+def get_token(file_path):
+    '''Gets a token from a file'''
     saved_token = None
-    if os.path.isfile(TOKEN_FILE_PATH):
-        with open(TOKEN_FILE_PATH, mode="r") as token_file:
+    if os.path.isfile(file_path):
+        with open(file_path, mode="r") as token_file:
             saved_token = token_file.readline()
 
     if not saved_token:
@@ -30,19 +31,18 @@ def __get_token():
     return saved_token
 
 
-def save_token():
+def save_token(file_path):
     '''Saves a token to the onc token file'''
     saved_token = None
     while not saved_token:
         saved_token = input('Enter your ONC token: ')
-    with open(TOKEN_FILE_PATH, mode="w") as token_file:
+    with open(file_path, mode="w") as token_file:
         token_file.write(saved_token)
         print("Token written to '{}', you should add this extension to your .gitignore".format(
-            TOKEN_FILE_PATH))
+            file_path))
     return saved_token
 
 
 if __name__ == "__main__":
-    save_token()
-else:
-    token = __get_token()
+    save_token(TOKEN_FILE_PATH)
+

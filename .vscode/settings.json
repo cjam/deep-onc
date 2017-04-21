@@ -9,7 +9,8 @@
     "**/.DS_Store": true,
     "**/node_modules":true,
     "**/.ipynb_checkpoints":true,
-    "**/*.pyc":true
+    "**/*.pyc":true,
+    "**/__pycache__":true
 },
 "python.pythonPath": "${workspaceRoot}/.env/bin/python"
 }

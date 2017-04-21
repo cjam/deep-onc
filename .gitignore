@@ -1,10 +1,11 @@
 # Node
 node_modules/
 
-
+# default Output dir
+output_dir/
 
 # ONC Token
-**/onc_token.py*
+.onc-token
 
 tensor_logs
 

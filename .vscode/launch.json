@@ -1,6 +1,28 @@
 {
     "version": "0.2.0",
     "configurations": [
+         {
+            "name": "ONC",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${workspaceRoot}/src/onc/ONC.py",
+            "cwd": "${workspaceRoot}",
+            "env": null,
+            "args":[
+                "-i"
+                ,"${workspaceRoot}/src/onc/AllBarkley2014ManualAnnotations_TimeFreq-JASCO_csv.csv"
+                ,"-o"
+                ,"${workspaceRoot}/output_dir/"
+            ],
+            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
         {
             "name": "Python",
             "type": "python",

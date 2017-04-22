@@ -175,7 +175,6 @@ class AnnotationFileManager(object):
                 next(reader)
             for csv_entry in reader:
                 try:
-                    # TODO: HANDLE BAD ENTRIES
                     line_num += 1
                     result = Annotation(csv_entry)
                     yield result

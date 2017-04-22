@@ -1,0 +1,1 @@
+Write-Error "TODO: port over setup.sh to powershell"

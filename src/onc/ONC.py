@@ -17,7 +17,6 @@ class Data(object):
     AnnotationsFile = os.path.abspath(
         "./src/onc/AllBarkley2014ManualAnnotations_TimeFreq-JASCO_csv.csv")
     CroppedWavsDir = os.path.abspath("./data/onc/cropped_wavs/")
-    SamplingRate = 64000
 
 
 class AnnotationFileManager(object):
@@ -132,10 +131,13 @@ class AnnotationFileManager(object):
         '''
         Cleans up after the processing is finished
         '''
-        self.download_queue.join()
-        self.process_queue.join()
+        try:
+            self.download_queue.join()
+            self.process_queue.join()
+            print("Work finished, cleaning up.")
+        except KeyboardInterrupt:
+            print("Processing cancelled")
 
-        print("Work finished, cleaning up.")
         for processor in self.processors:
             processor.finish_processing()
 
@@ -156,9 +158,8 @@ class AnnotationFileManager(object):
                 self.download_queue.put(annotated_file)
             else:
                 self.num_files_processed += 1
-                print("No processing needed for annotated file {}".format(
-                    annotated_file.file_name))
-
+                print("{} files already processed".format(self.num_files_processed), end='\r')
+        print('')
         self.begin_processing()
         self.finish_processing()
 
